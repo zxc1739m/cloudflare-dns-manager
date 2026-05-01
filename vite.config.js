@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import { visualizer } from 'rollup-plugin-visualizer'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -37,9 +36,8 @@ export default defineConfig({
         ]
       }
     }),
-    // 将 visualizer 放在最后，并移除前面的 .filter(Boolean)
-    process.env.ANALYZE ? visualizer({ open: false, filename: 'dist/stats.html', gzipSize: true }) : null
-  ].filter(item => item !== null),
+    visualizer({ open: false, filename: 'dist/stats.html', gzipSize: true })
+  ],
   test: {
     globals: true,
     environment: 'jsdom',
