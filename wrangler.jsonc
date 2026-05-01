@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cloudflare-dns-manager",
   "compatibility_date": "2026-05-01",
+  "main": "functions/[[path]].ts", 
   "observability": {
     "enabled": true
   },
