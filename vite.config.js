@@ -7,7 +7,6 @@ import { visualizer } from 'rollup-plugin-visualizer'
 export default defineConfig({
   plugins: [
     react(),
-    process.env.ANALYZE && visualizer({ open: false, filename: 'dist/stats.html', gzipSize: true }),
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
@@ -37,8 +36,10 @@ export default defineConfig({
           { src: '/logo.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }
         ]
       }
-    })
-  ].filter(Boolean),
+    }),
+    // 将 visualizer 放在最后，并移除前面的 .filter(Boolean)
+    process.env.ANALYZE ? visualizer({ open: false, filename: 'dist/stats.html', gzipSize: true }) : null
+  ].filter(item => item !== null),
   test: {
     globals: true,
     environment: 'jsdom',
