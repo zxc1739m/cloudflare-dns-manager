@@ -2,17 +2,13 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cloudflare-dns-manager",
   "compatibility_date": "2026-05-01",
-  "main": "functions/[[path]].ts", 
+  "pages_build_output_dir": "dist", 
   "observability": {
     "enabled": true
   },
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS"
-  },
   "kv_namespaces": [
     {
       "binding": "CF_DNS_KV",
